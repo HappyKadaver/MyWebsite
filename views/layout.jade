@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/dist/css/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type="text/javascript", src="/dist/js/jquery-2.1.1.js")
+    script(type="text/javascript", src="/dist/js/bootstrap.js")
+  body(data-spy="scroll", data-target="[role=nav]", data-offset="150")
+    nav.navbar.navbar-inverse.navbar-default.navbar-fixed-top
+      .container
+        a.navbar-brand.navbar-right(href="#") Website in der Cloud
+        .nav-collapse
+          ul.nav.navbar-nav
+            li(class= (path == "projects" ? "active" : ""))
+              a(href="/projects") Projekte
+            li(class= (path == "resume" ? "active" : ""))
+              a(href="/resume") Lebenslauf
+            li(class= (path == "impressum" ? "active" : ""))
+              a(href="/impressum") Impressum
+    .container
+      .row
+        block content
