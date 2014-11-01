@@ -6,7 +6,7 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(type="text/javascript", src="/dist/js/jquery-2.1.1.js")
     script(type="text/javascript", src="/dist/js/bootstrap.js")
-  body(data-spy="scroll", data-target="[role=nav]", data-offset="150")
+  body(data-spy="scroll", data-target="[role=nav]", data-offset="70")
     nav.navbar.navbar-inverse.navbar-default.navbar-fixed-top
       .container
         a.navbar-brand.navbar-right(href="#") Website in der Cloud
@@ -18,6 +18,22 @@ html
               a(href="/resume") Lebenslauf
             li(class= (path == "impressum" ? "active" : ""))
               a(href="/impressum") Impressum
-    .container
+    .container(style="margin-top: 70px")
       .row
-        block content
+        .col-md-3(role="nav")
+          div.affix
+            img.img-circle.col-md-12(src="/images/hobbypunk.jpg", style="padding:5px;border: 1px solid #ddd;margin-bottom:20px;margin-left: 8px;")
+            if(nav !== undefined || path == "projects")
+              ul.nav.nav-pills.nav-stacked
+                if( path == "projects")
+                  each h in hosts
+                    li(class=(host == h ? "active" : ""))
+                      a(href="/projects/" + h.toLowerCase())= h
+                        if(host == h)
+                          span.badge=repos.length               
+                else
+                  each entry in nav
+                    li(class=(entry.clss !== undefined)? "":entry.clss)
+                      a(href="#" + entry.href)= entry.name
+        .col-md-9(role="main")
+          block content

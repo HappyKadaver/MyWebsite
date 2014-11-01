@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  .page-header
+    h1= title
+  .row
+    each repo in repos
+      .col-md-5.col-md-offset-1.well.well-sm
+        center
+          h3
+            a(href=repo["url"])= repo["name"]
+        span.label.label-success= repo["lang"]
