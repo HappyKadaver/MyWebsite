@@ -28,9 +28,9 @@ html
                 if( path == "projects")
                   each h in hosts
                     li(class=(host == h ? "active" : ""))
-                      a(href="/projects/" + h.toLowerCase())= h
+                      a(style="width:100%", href="/projects/" + h.toLowerCase())= h
                         if(host == h)
-                          span.badge=repos.length               
+                          span.badge(style="float:right;")=repos.length               
                 else
                   each entry in nav
                     li(class=(entry.clss !== undefined)? "":entry.clss)
